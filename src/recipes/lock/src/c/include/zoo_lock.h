@@ -50,13 +50,19 @@ struct zkr_lock_mutex {
     char *id;
     void *cbdata;
     zkr_lock_completion completion;
-    pthread_mutex_t pmutex;
     int isOwner;
     char* ownerid;
 };
 
 typedef struct zkr_lock_mutex zkr_lock_mutex_t;
 
+/**
+ * \brief init the zook lock pthread mutex
+ *
+ * this method init the pthread mutex
+ * call once before use other function
+ */
+void zkr_lock_start();
 
 /**
  * \brief initializing a zookeeper lock.
